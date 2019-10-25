@@ -30,8 +30,11 @@ namespace Base.LocaleService
 
 		private void OnDestroy()
 		{
-			_localString.TextChangedEvent -= OnLocalTextChanged;
-			_localString.Dispose();
+			if (_localString != null)
+			{
+				_localString.TextChangedEvent -= OnLocalTextChanged;
+				_localString.Dispose();
+			}
 		}
 
 		// ILocaleController
