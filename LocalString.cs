@@ -34,6 +34,7 @@ namespace Base.LocaleService
 			_key = key;
 			_formatArgs = formatArgs;
 			localeService.CurrentLanguageChangedEvent += OnCurrentLanguageChanged;
+			UpdateCurrentLanguage(localeService.CurrentLanguage);
 		}
 
 		private void OnCurrentLanguageChanged(object sender, CurrentLanguageChangedEventArgs args)

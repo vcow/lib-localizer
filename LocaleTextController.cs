@@ -20,6 +20,7 @@ namespace Base.LocaleService
 			_key = _key ?? _text.text.Trim();
 			_localString = new LocalString(_localeService, _key, _formatArgs);
 			_localString.TextChangedEvent += OnLocalTextChanged;
+			_text.text = _localString.Value;
 		}
 
 		private void OnLocalTextChanged(LocalString localString, string oldText)
@@ -29,8 +30,11 @@ namespace Base.LocaleService
 
 		private void OnDestroy()
 		{
-			_localString.TextChangedEvent -= OnLocalTextChanged;
-			_localString.Dispose();
+			if (_localString != null)
+			{
+				_localString.TextChangedEvent -= OnLocalTextChanged;
+				_localString.Dispose();
+			}
 		}
 
 		// ILocaleController
