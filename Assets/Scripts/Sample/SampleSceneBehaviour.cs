@@ -1,3 +1,4 @@
+using System;
 using Base.GameService;
 using Base.LocaleService;
 using UnityEngine;
@@ -21,8 +22,9 @@ namespace Sample
 			_localeService.Initialize();
 		}
 
-		private void LocaleServiceOnReadyEvent(IGameService service)
+		private void LocaleServiceOnReadyEvent(object sender, EventArgs args)
 		{
+			var service = (IGameService) sender;
 			service.ReadyEvent -= LocaleServiceOnReadyEvent;
 			Debug.Log(_localeService.GetLocalized("key.1"));
 			Debug.Log(_localeService.GetLocalized("key.2"));

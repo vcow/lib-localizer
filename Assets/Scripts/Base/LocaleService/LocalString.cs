@@ -37,9 +37,10 @@ namespace Base.LocaleService
 			UpdateCurrentLanguage(localeService.CurrentLanguage);
 		}
 
-		private void OnCurrentLanguageChanged(object sender, CurrentLanguageChangedEventArgs args)
+		private void OnCurrentLanguageChanged(object sender, EventArgs args)
 		{
-			UpdateCurrentLanguage(args.CurrentLanguage);
+			var currentLanguageChangedEventArgs = (CurrentLanguageChangedEventArgs) args;
+			UpdateCurrentLanguage(currentLanguageChangedEventArgs.CurrentLanguage);
 		}
 
 		private void UpdateCurrentLanguage(SystemLanguage language)
