@@ -70,12 +70,13 @@ namespace Base.LocaleService
 			private set
 			{
 				if (value == _currentLanguage) return;
+				var args = new CurrentLanguageChangedEventArgs(value, _currentLanguage);
 				_currentLanguage = value;
-				CurrentLanguageChangedEvent?.Invoke(_currentLanguage);
+				CurrentLanguageChangedEvent?.Invoke(this, args);
 			}
 		}
 
-		public event CurrentLanguageChangedHandler CurrentLanguageChangedEvent;
+		public event EventHandler<CurrentLanguageChangedEventArgs> CurrentLanguageChangedEvent;
 
 		public virtual void Initialize(params object[] args)
 		{
