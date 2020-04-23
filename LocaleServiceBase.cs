@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Base.GameService;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -76,7 +75,7 @@ namespace Base.LocaleService
 			}
 		}
 
-		public event EventHandler<CurrentLanguageChangedEventArgs> CurrentLanguageChangedEvent;
+		public event EventHandler CurrentLanguageChangedEvent;
 
 		public virtual void Initialize(params object[] args)
 		{
@@ -118,11 +117,11 @@ namespace Base.LocaleService
 
 				Assert.IsFalse(_isReady);
 				_isReady = value;
-				ReadyEvent?.Invoke(this);
+				ReadyEvent?.Invoke(this, new ReadyEventArgs(true));
 			}
 		}
 
-		public event GameServiceReadyHandler ReadyEvent;
+		public event EventHandler ReadyEvent;
 
 		public void SetCurrentLanguage(SystemLanguage lang)
 		{
