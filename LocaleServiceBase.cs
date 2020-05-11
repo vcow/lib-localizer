@@ -75,7 +75,7 @@ namespace Base.LocaleService
 			}
 		}
 
-		public event EventHandler CurrentLanguageChangedEvent;
+		public event EventHandler<CurrentLanguageChangedEventArgs> CurrentLanguageChangedEvent;
 
 		public virtual void Initialize(params object[] args)
 		{
@@ -121,7 +121,7 @@ namespace Base.LocaleService
 			}
 		}
 
-		public event EventHandler ReadyEvent;
+		public event EventHandler<ReadyEventArgs> ReadyEvent;
 
 		public void SetCurrentLanguage(SystemLanguage lang)
 		{
