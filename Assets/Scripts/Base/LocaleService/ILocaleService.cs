@@ -26,7 +26,7 @@ namespace Base.LocaleService
 		/// <summary>
 		/// Событие смены текущего языка локализации.
 		/// </summary>
-		event EventHandler CurrentLanguageChangedEvent;
+		event EventHandler<CurrentLanguageChangedEventArgs> CurrentLanguageChangedEvent;
 
 		/// <summary>
 		/// Задать текущий язык локализации.
