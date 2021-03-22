@@ -1,9 +1,20 @@
+using System;
 using Base.GameService;
 using UnityEngine;
 
 namespace Base.LocaleService
 {
-	public delegate void CurrentLanguageChangedHandler(SystemLanguage language);
+	public class CurrentLanguageChangedEventArgs : EventArgs
+	{
+		public SystemLanguage CurrentLanguage { get; }
+		public SystemLanguage PreviousLanguage { get; }
+
+		public CurrentLanguageChangedEventArgs(SystemLanguage currentLanguage, SystemLanguage previousLanguage)
+		{
+			CurrentLanguage = currentLanguage;
+			PreviousLanguage = previousLanguage;
+		}
+	}
 
 	public interface ILocaleService : IGameService
 	{
@@ -15,7 +26,7 @@ namespace Base.LocaleService
 		/// <summary>
 		/// Событие смены текущего языка локализации.
 		/// </summary>
-		event CurrentLanguageChangedHandler CurrentLanguageChangedEvent;
+		event EventHandler<CurrentLanguageChangedEventArgs> CurrentLanguageChangedEvent;
 
 		/// <summary>
 		/// Задать текущий язык локализации.

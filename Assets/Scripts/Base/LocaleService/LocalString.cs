@@ -23,7 +23,7 @@ namespace Base.LocaleService
 			if (_isDisposed) return;
 			_isDisposed = true;
 
-			_localeService.CurrentLanguageChangedEvent -= OnUpdateValue;
+			_localeService.CurrentLanguageChangedEvent -= OnCurrentLanguageChanged;
 		}
 
 		// \IDisposable
@@ -33,11 +33,16 @@ namespace Base.LocaleService
 			_localeService = localeService;
 			_key = key;
 			_formatArgs = formatArgs;
-			localeService.CurrentLanguageChangedEvent += OnUpdateValue;
-			OnUpdateValue(localeService.CurrentLanguage);
+			localeService.CurrentLanguageChangedEvent += OnCurrentLanguageChanged;
+			UpdateCurrentLanguage(localeService.CurrentLanguage);
 		}
 
-		private void OnUpdateValue(SystemLanguage language)
+		private void OnCurrentLanguageChanged(object sender, CurrentLanguageChangedEventArgs args)
+		{
+			UpdateCurrentLanguage(args.CurrentLanguage);
+		}
+
+		private void UpdateCurrentLanguage(SystemLanguage language)
 		{
 			if (_isDisposed) return;
 
@@ -75,7 +80,7 @@ namespace Base.LocaleService
 			{
 				if (value == _key) return;
 				_key = value;
-				OnUpdateValue(_localeService.CurrentLanguage);
+				UpdateCurrentLanguage(_localeService.CurrentLanguage);
 			}
 			get => _key;
 		}
@@ -88,7 +93,7 @@ namespace Base.LocaleService
 			set
 			{
 				_formatArgs = value?.ToArray();
-				OnUpdateValue(_localeService.CurrentLanguage);
+				UpdateCurrentLanguage(_localeService.CurrentLanguage);
 			}
 			get => _formatArgs.ToArray();
 		}
