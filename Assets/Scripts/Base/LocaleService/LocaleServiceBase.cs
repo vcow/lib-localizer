@@ -252,7 +252,7 @@ namespace Base.LocaleService
 			{
 				obj.completed -= OnCompleted;
 
-				if (www.isNetworkError || www.isHttpError)
+				if (www.result != UnityWebRequest.Result.Success)
 				{
 					Debug.LogErrorFormat("Failed to load manifest from {0} with error: {1}", path, www.error);
 					callback?.Invoke(new string[0]);
@@ -282,7 +282,7 @@ namespace Base.LocaleService
 				var isReady = false;
 				if (_readyMutex.WaitOne())
 				{
-					if (www.isNetworkError || www.isHttpError)
+					if (www.result != UnityWebRequest.Result.Success)
 					{
 						Debug.LogErrorFormat("Failed to load locales from {0} with error: {1}", path, www.error);
 					}

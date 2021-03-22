@@ -81,11 +81,11 @@
       }
     },
     "vcow.base.logicality": {
-      "version": "https://github.com/vcow/lib-logicality.git#1.0.0",
+      "version": "https://github.com/vcow/lib-logicality.git#1.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "0be740a9b68449901545a163fa8d332d0f544b08"
+      "hash": "88d58961a34f7f1c75287101e6d1cc60d99ee839"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
