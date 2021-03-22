@@ -7,3 +7,5 @@ Dependencies:
 - "com.unity.textmeshpro": "2.0.1"
 
 See Wiki for details.
+
+__CAUTION:__ for sample install Extentject plugin!
