@@ -1,6 +1,4 @@
-using System;
-using Base.GameService;
-using Base.LocaleService;
+using Base.Localization;
 using UnityEngine;
 using Zenject;
 
@@ -9,7 +7,7 @@ namespace Sample
 	public class SampleSceneBehaviour : MonoInstaller<SampleSceneBehaviour>
 	{
 #pragma warning disable 649
-		[Inject] private readonly ILocaleService _localeService;
+		[Inject] private readonly ILocalizationManager _localizationManager;
 #pragma warning restore 649
 
 		public override void InstallBindings()
@@ -18,18 +16,10 @@ namespace Sample
 
 		public override void Start()
 		{
-			_localeService.ReadyEvent += LocaleServiceOnReadyEvent;
-			_localeService.Initialize();
-		}
-
-		private void LocaleServiceOnReadyEvent(object sender, EventArgs args)
-		{
-			var service = (IGameService) sender;
-			service.ReadyEvent -= LocaleServiceOnReadyEvent;
-			Debug.Log(_localeService.GetLocalized("key.1"));
-			Debug.Log(_localeService.GetLocalized("key.2"));
-			Debug.Log(_localeService.GetLocalized("key.3"));
-			Debug.Log(_localeService.GetLocalized("key.4"));
+			Debug.Log(_localizationManager.GetLocalized("key.1"));
+			Debug.Log(_localizationManager.GetLocalized("key.2"));
+			Debug.Log(_localizationManager.GetLocalized("key.3"));
+			Debug.Log(_localizationManager.GetLocalized("key.4"));
 		}
 	}
 }

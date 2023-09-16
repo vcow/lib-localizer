@@ -1,4 +1,5 @@
-using Base.LocaleService;
+using Base.Localization;
+using UnityEngine;
 using Zenject;
 
 namespace Sample
@@ -7,7 +8,8 @@ namespace Sample
 	{
 		public override void InstallBindings()
 		{
-			Container.Bind<ILocaleService>().To<LocaleService>().AsSingle();
+			Container.Bind<ILocalizationManager>().To<LocalizationManager>().AsSingle()
+				.WithArguments(Application.systemLanguage);
 		}
 	}
 }
