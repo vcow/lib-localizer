@@ -1,14 +1,18 @@
+using System;
 using Base.Localization;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Sample
 {
 	public class SampleSceneBehaviour : MonoInstaller<SampleSceneBehaviour>
 	{
-#pragma warning disable 649
 		[Inject] private readonly ILocalizationManager _localizationManager;
-#pragma warning restore 649
+
+		[SerializeField] private Toggle _ruToggle;
+		[SerializeField] private Toggle _enToggle;
 
 		public override void InstallBindings()
 		{
@@ -16,10 +20,42 @@ namespace Sample
 
 		public override void Start()
 		{
-			Debug.Log(_localizationManager.GetLocalized("key.1"));
-			Debug.Log(_localizationManager.GetLocalized("key.2"));
-			Debug.Log(_localizationManager.GetLocalized("key.3"));
-			Debug.Log(_localizationManager.GetLocalized("key.4"));
+			var canvas = FindObjectOfType<Canvas>();
+			Assert.IsTrue(canvas);
+
+			var window = Container.InstantiatePrefabResource("SimpleLocalization");
+			window.transform.SetParent(canvas.transform, false);
+			_localizationManager.Localize(window);
+
+			window = Container.InstantiatePrefabResource("InteractiveLocalization");
+			window.transform.SetParent(canvas.transform, false);
+			_localizationManager.Localize(window, true);
+
+			switch (_localizationManager.CurrentLanguage)
+			{
+				case SystemLanguage.English:
+					_enToggle.isOn = true;
+					break;
+				case SystemLanguage.Russian:
+					_ruToggle.isOn = true;
+					break;
+				default:
+					throw new NotSupportedException();
+			}
+		}
+
+		public void OnSelectLanguage(bool check)
+		{
+			if (!check) return;
+
+			if (_ruToggle.isOn)
+			{
+				_localizationManager.SetCurrentLanguage(SystemLanguage.Russian);
+			}
+			else if (_enToggle.isOn)
+			{
+				_localizationManager.SetCurrentLanguage(SystemLanguage.English);
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
 ,en,ru
 key.1,Some button,Какая-то кнопка
-key.2,Some text,Какой-то текст
+key.2,Some text {0} and {1} and {2}.,Какой-то текст {0} и {1} и {2}.
 key.3,Description,Заголовок

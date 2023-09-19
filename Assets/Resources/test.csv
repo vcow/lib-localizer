@@ -1,0 +1,32 @@
+,col #1,col #2,col #3,col #4,col #5,col #6,col #7,col #8,col #9,col #10
+row #1,This is a simple text 1 wo any suprises.,This is a simple text 2 wo any suprises.,This is a simple text 3 wo any suprises.,This is a simple text 4 wo any suprises.,This is a simple text 5 wo any suprises.,This is a simple text 6 wo any suprises.,This is a simple text 7 wo any suprises.,This is a simple text 8 wo any suprises.,This is a simple text 1 wo any suprises.,This is a simple text 10 wo any suprises.
+row #2,,"This is the, text 1, with, coma",,"This is the, text 2, with, coma",,"This is the, text 3, with, coma",,"This is the, text 4, with, coma",,"This is the, text 5, with, coma"
+row #3,"This is ""text 1 with quotes""",,"This is ""text 2 with quotes""",,"This is ""text 3 with quotes""",,"This is ""text 4 with quotes""",,"This is ""text 5 with quotes""",
+row #4,"The text 1 "" with ""quotes"", and "" comas. ",,"The text 2 "" with ""quotes"", and "" comas. ","The text 3 "" with ""quotes"", and "" comas. ",,,,,,
+row #5,This is a simple text 1 wo any suprises.,This is a simple text 2 wo any suprises.,,,"The multiline
+and multiline
+and multiline
+text 1","The multiline
+and multiline
+and multiline
+text 2","The multiline
+and multiline
+and multiline
+text 3",,,
+row #6,"The multiline,
+and multiline,
+and multiline,
+text 1 with comas","The multiline,
+and multiline,
+and multiline,
+text 1 with comas","The multiline,
+and ""multiline,
+and multiline,
+text 1 with"" comas and quotes",,,,,,,
+row #7,"This is ""text 1 with quotes""",,"This is ""text 2 with quotes""",,"This is ""text 3 with quotes""",,"This is ""text 4 with quotes""",,"This is ""text 5 with quotes""",
+row #8,,,,,,,,,,
+row #9,,,,,,,,,,
+row #10,,,,"The multiline,
+and ""multiline,
+and multiline,
+text 2 with"" comas and quotes",,,,,,

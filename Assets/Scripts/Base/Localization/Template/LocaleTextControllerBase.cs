@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,16 +13,23 @@ namespace Base.Localization.Template
 	[DisallowMultipleComponent, RequireComponent(typeof(Text))]
 	public abstract class LocaleTextControllerBase : MonoBehaviour
 	{
-		private object[] _formatArgs;
 		private LocalString _localString;
 		private Text _text;
 
+		[SerializeField] private bool _localizeText = true;
+		[SerializeField] private bool _interactWithManager = true;
 		[SerializeField] private string _key;
+		[SerializeField] private List<string> _formatArguments;
 
 		protected abstract ILocalizationManager LocalizationManager { get; }
 
-		private void Start()
+		protected virtual void Start()
 		{
+			if (!_localizeText)
+			{
+				return;
+			}
+
 			if (LocalizationManager == null)
 			{
 				Debug.LogWarning("ILocalizationService isn't present in LocaleTextController.");
@@ -28,10 +37,18 @@ namespace Base.Localization.Template
 			}
 
 			_text = GetComponent<Text>();
-			_key ??= _text.text.Trim();
-			_localString = new LocalString(LocalizationManager, _key, _formatArgs);
-			_localString.ValueChangedEvent += OnLocalStringValueChanged;
+			if (string.IsNullOrEmpty(_key))
+			{
+				_key = _text.text.Trim();
+			}
+
+			_localString = new LocalString(LocalizationManager, _key, _formatArguments?.Cast<object>().ToArray());
 			_text.text = _localString.Value;
+
+			if (_interactWithManager)
+			{
+				_localString.ValueChangedEvent += OnLocalStringValueChanged;
+			}
 		}
 
 		private void OnLocalStringValueChanged(LocalString localString, string value)
@@ -39,9 +56,18 @@ namespace Base.Localization.Template
 			_text.text = value;
 		}
 
-		private void OnDestroy()
+		protected virtual void OnDestroy()
 		{
-			_localString.ValueChangedEvent -= OnLocalStringValueChanged;
+			if (_localString == null)
+			{
+				return;
+			}
+
+			if (_interactWithManager)
+			{
+				_localString.ValueChangedEvent -= OnLocalStringValueChanged;
+			}
+
 			_localString.Dispose();
 		}
 	}

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Base.Assignments.Initable;
 using Base.Localization;
 using Base.Localization.Template;
 using UnityEngine;
@@ -40,5 +41,7 @@ namespace Sample
 			_provider = new CSVLocalizationProvider();
 			_provider.Init(_csvLocalizationTables);
 		}
+
+		public bool IsInitialized => _provider?.IsInited ?? false;
 	}
 }
