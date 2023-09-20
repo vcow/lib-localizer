@@ -22,11 +22,25 @@ namespace Base.Localization.Template
 		[SerializeField] private string _key;
 		[SerializeField] private List<string> _formatArguments;
 
+		/// <summary>
+		/// Pass a reference to the Localization Manager from the child class through this property.
+		/// </summary>
 		protected abstract ILocalizationManager LocalizationManager { get; }
+
+		/// <summary>
+		/// The flag indicates whether text localization is enabled or disabled.
+		/// </summary>
+		public virtual bool LocalizeText => _localizeText;
+
+		/// <summary>
+		/// The flag indicates whether the tracking of current language changes in the Localization Manager
+		///  enabled or disabled.
+		/// </summary>
+		public virtual bool InteractWithManager => _interactWithManager;
 
 		protected virtual void Start()
 		{
-			if (!_localizeText)
+			if (!LocalizeText)
 			{
 				return;
 			}
@@ -46,7 +60,7 @@ namespace Base.Localization.Template
 			_localString = new LocalString(LocalizationManager, _key, _formatArguments?.Cast<object>().ToArray());
 			_text.text = _localString.Value;
 
-			if (_interactWithManager)
+			if (InteractWithManager)
 			{
 				_localString.ValueChangedEvent += OnLocalStringValueChanged;
 			}
@@ -64,7 +78,7 @@ namespace Base.Localization.Template
 				return;
 			}
 
-			if (_interactWithManager)
+			if (InteractWithManager)
 			{
 				_localString.ValueChangedEvent -= OnLocalStringValueChanged;
 			}

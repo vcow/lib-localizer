@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['language_0',['Language',['../class_base_1_1_localization_1_1_locale_entry.html#a5e3c3c17057b883a14ead93419d66457',1,'Base::Localization::LocaleEntry']]],
+  ['locales_1',['locales',['../interface_base_1_1_localization_1_1_i_localization_provider.html#a3d65f110b08abbc05d766664829b8c4b',1,'Base.Localization.ILocalizationProvider.Locales'],['../class_base_1_1_localization_1_1_template_1_1_c_s_v_localization_provider.html#a2db0e5d50dd37ef5fbf34fb815034a3e',1,'Base.Localization.Template.CSVLocalizationProvider.Locales']]],
+  ['localizationmanager_2',['localizationmanager',['../class_base_1_1_localization_1_1_template_1_1_locale_text_controller_base.html#a515f2c1bf77c4e4351b254c0dfcb7d41',1,'Base.Localization.Template.LocaleTextControllerBase.LocalizationManager'],['../class_base_1_1_localization_1_1_template_1_1_locale_t_m_p_controller_base.html#abb3fabb7ded7b506e308eb11f6b90193',1,'Base.Localization.Template.LocaleTMPControllerBase.LocalizationManager']]],
+  ['localizetext_3',['localizetext',['../class_base_1_1_localization_1_1_template_1_1_locale_text_controller_base.html#a3a7440fa1357ff91f153d8826aaef4f3',1,'Base.Localization.Template.LocaleTextControllerBase.LocalizeText'],['../class_base_1_1_localization_1_1_template_1_1_locale_t_m_p_controller_base.html#a1e684967fb0b5e617e050b5e9de08f17',1,'Base.Localization.Template.LocaleTMPControllerBase.LocalizeText']]]
+];
