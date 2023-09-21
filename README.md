@@ -1,17 +1,17 @@
 # Localization Manager
 **CAUTION:** <u>If you want to launch sample code from this repository, install Extentject plugin first!</u>
 
+The **Localization Manager** is the basis of a simple text localization manager.
+
 ## Installation
 You can download and install <code>localizer.unitypackage</code> from this repository or add the Localization Manager base from **Github** as a dependency.
-
-The **Localization Manager** is the basis of a simple text localization manager.
 
 ### Github
 Go to the <code>manifest.json</code> and in the section <code>dependencies</code> add next dependencies:
 ```
   "dependencies": {
-    "vcow.base.locale": "https://github.com/vcow/lib-localizer.git?path=/Assets/Scripts/Base/Localization#2.0.0",
-    "vcow.base.assignments": "https://github.com/vcow/lib-logicality.git?path=/Assets/Scripts/Base/Assignments#3.0.0",
+    "vcow.base.locale": "https://github.com/vcow/lib-localizer.git?path=/Assets/Scripts/Base/Localization#2.0.1",
+    "vcow.base.assignments": "https://github.com/vcow/lib-logicality.git?path=/Assets/Scripts/Base/Assignments#3.0.1",
     ...
   }
 ```
@@ -21,7 +21,7 @@ The Localization Manager consists of two basic parts: the **Localization Provide
 
 ### LocalizationProvider
 The **Localization Provider** can get its data from any sources depending on its implementation. That can be plain text, XML or CSV text, binary data, local or remote - doesn't matter. The Provider must implements <code>ILocalizationProvider</code> interface.<br/>
-Typically, the Provider requires initial initialization to load data, but may not, so the initialization isn't reflected in the <code>ILocalizationProvider</code> interface. You can use the <code>IInitable</code> interface from the library <a href="https://github.com/vcow/lib-logicality/tree/master">Logicality</a> library to support Provider initialization.
+Typically, the Provider requires initial initialization to load data, but may not, so the initialization isn't reflected in the <code>ILocalizationProvider</code> interface. You can use the <code>IInitable</code> interface from the <a href="https://github.com/vcow/lib-logicality/tree/master">Logicality</a> library to support Provider initialization.
 
 #### CSVLocalizationProvider
 This library includes the <code>CSVLocalizationProvider</code> - provider, that works with tables in the CSV format. It received the references to text resources containing CSV tables as an initialization arguments. The first line of that CSV table represents a header with the language indices, and the left column contains localization keys.

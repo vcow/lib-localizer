@@ -1,7 +1,7 @@
 {
   "name": "vcow.base.locale",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "dependencies": {
-    "vcow.base.assignments": "https://github.com/vcow/lib-logicality.git?path=/Assets/Scripts/Base/Assignments#3.0.0"
+    "vcow.base.assignments": "https://github.com/vcow/lib-logicality.git?path=/Assets/Scripts/Base/Assignments#3.0.1"
   }
 }

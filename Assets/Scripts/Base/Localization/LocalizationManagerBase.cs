@@ -44,15 +44,13 @@ namespace Base.Localization
 					.Select(entries =>
 					{
 						var entry = entries.First();
-						if (Debug.isDebugBuild)
+#if DEBUG || UNITY_EDITOR
+						var entriesCount = entries.Count();
+						if (entriesCount > 1)
 						{
-							var entriesCount = entries.Count();
-							if (entriesCount > 1)
-							{
-								Debug.LogErrorFormat("The language {0} has {1} entries.", entries.Key, entriesCount);
-							}
+							Debug.LogErrorFormat("The language {0} has {1} entries.", entries.Key, entriesCount);
 						}
-
+#endif
 						return entry;
 					})
 					.ToDictionary(entry => entry.Language));
@@ -160,16 +158,14 @@ namespace Base.Localization
 				         .Select(entries =>
 				         {
 					         var entry = entries.First();
-					         if (Debug.isDebugBuild)
+#if DEBUG || UNITY_EDITOR
+					         var entriesCount = entries.Count();
+					         if (entriesCount > 1)
 					         {
-						         var entriesCount = entries.Count();
-						         if (entriesCount > 1)
-						         {
-							         Debug.LogErrorFormat("The language {0} has {1} entries.", entries.Key,
-								         entriesCount);
-						         }
+						         Debug.LogErrorFormat("The language {0} has {1} entries.", entries.Key,
+							         entriesCount);
 					         }
-
+#endif
 					         return entry;
 				         }))
 			{
